@@ -2,7 +2,7 @@
 
 namespace GerenciamentoPedidosEstoque.Models;
 
-public class Produto
+public class Product
 {
     [Required] public int Id { get; init; }
     [Required] public string Name { get; set; }
