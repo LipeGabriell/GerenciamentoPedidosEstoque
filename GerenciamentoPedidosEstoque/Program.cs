@@ -1,15 +1,20 @@
+using GerenciamentoPedidosEstoque.Contexts;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+#region Database
+
+builder.Services.AddSqlite<ApplicationDbContext>("Data Source=./database.db;");
+builder.Services.AddScoped<ApplicationDbContext>();
+
+#endregion
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
